@@ -1,5 +1,6 @@
-# CompGuessGameJSvsPython
-##Javascript and Python versions of a Computer Number Guessing Game
+# Computer Guessing Game:Javascript vs Python
+
+Javascript and Python versions of a Computer Number Guessing Game
 
 I wanted to compare the differences between writing a program in Python and coding the same program in Javascript. 
 

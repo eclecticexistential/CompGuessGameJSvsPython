@@ -1,71 +1,64 @@
 <!DOCTYPE html>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
-<body>
-<script>
+<body class="bg-success">
+<div class="text-center">
+  <h1 class="display-5 my-5 font-weight-bold text-primary">Computer Guessing Game</h1>
+  <p>
+	I wanted to compare the differences between writing a program in Python and coding the same program in Javascript.
+	The game requires users to enter a number and the computer eliminates possible answers by changing the range of possible numbers.
+	In Python, I was able to achieve this in 31 lines of code. *see below
+	Javascript, however, required double that before adding in UI tools.
+	Try it for yourself!
+	Enter a number below to activate the Javascript version.
+  </p>
+  
+  <div class="input-group m-auto" id="outer">
+    <input type="text" id="here" class="form-control" placeholder="Enter a number between 1 and 10">
+    <input type="button" id="submit" class="btn ml-2" value="Submit">
+  </div>
+  <div class="wrap">
+          <p id="num"></p>
+      </div>
+	  
+	<div>
+	<h1>Computer Guessing Game in Python</h1>
+	<p>def comp_guess_game():
+    hidden_number = int(input("This is the secret number I've picked, between 1 and 10."))
+    computer_guess = random.randint(1, 10)
+    guesses = list()
 
-function game(){
-	hiddenAnswer = prompt("Pick an number between 1 and 10.")
-	compGuess = Math.floor(Math.random()*10)+1
-	guesses = [];
-	x = 0
-	y = 0
+    while True:
+        guesses.append(computer_guess)
+        if computer_guess == hidden_number:
+            if len(guesses) == 1:
+                print("The computer guessed your secret number on the first try!")
+                break
+            else:
+                print("The computer guessed your secret number " + str(hidden_number) + " with only " + str(
+                    len(guesses)) + " guesses!")
+                break
+        elif len(guesses) < 5:
+            if computer_guess < hidden_number:
+                print("The computer's guess is: " + str(computer_guess) + ". Let's tell them it's too low.")
+                x = computer_guess+1
+                computer_guess = random.randint(x,10)
 
-	function randomIntFromInterval(min,max)
-	{
-		return Math.floor(Math.random()*(max-min+1)+min);
-	}
+            elif computer_guess > hidden_number:
+                print("The computer's guess is: " + str(computer_guess) + ". Let's tell them it's too high.")
+                x = computer_guess-1
+                computer_guess = random.randint(1,x)
+        else:
+            print("""You win!
+The computer was unable to guess your number in 4 guesses.
+""")
+            break
+comp_guess_game()
+</p>
+	</div>
+  </div>
 
-	while(guesses.length < 4){
-		if(compGuess == hiddenAnswer && guesses.length == 0){
-			alert("Computer guessed your number "+hiddenAnswer+" on the first try!")
-			playAgain()
-			}
-		if(compGuess == hiddenAnswer){
-			alert("Computer guessed your number "+hiddenAnswer+" in "+ guesses.length + " guesses.")
-			playAgain()
-			}
-		if(compGuess < hiddenAnswer){
-			guesses.push(compGuess)
-			alert("Computer's guess "+ compGuess + " is too low.")
-			x = compGuess
-			if(y != 0){
-				compGuess = randomIntFromInterval(x,y)
-			}
-			else{
-				compGuess = randomIntFromInterval(x,10)
-				}
-			}
-		if(compGuess > hiddenAnswer){
-			guesses.push(compGuess)
-			alert("Computer's guess "+ compGuess + " is too high.")
-			y = compGuess
-			if(x!=0){
-				compGuess = randomIntFromInterval(x,y)
-			}
-			else{
-				compGuess = randomIntFromInterval(1,y)
-				}
-			}
-		if(guesses.length > 3){
-			alert("You win! Computer was unable to guess "+hiddenAnswer+" in "+ guesses.length + " guesses.")
-			playAgain()
-	}
-}
-
-function playAgain(){
-		answer = prompt("Play again?").toLowerCase()
-		if(answer == 'yes'){
-			compGuess = x = 0
-			game()
-		}
-		if(answer == 'no'){
-			alert("Goodbye!")
-		}
-		}
-}
-
-game()
-</script>
+<script src="scripts.js"></script>
 </body>
 	

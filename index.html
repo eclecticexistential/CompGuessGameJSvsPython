@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body class="bg-success">
+<div class="text-center">
+  <h1 class="display-4 my-5 font-weight-bold text-primary">Computer Guessing Game</h1>
+  <p class="text-center m-5">
+	I wanted to compare the differences between writing a program in Python and coding the same program in Javascript.
+	The game requires users to enter a number and the computer eliminates possible answers by changing the range of possible numbers.
+	In Python, I was able to achieve this in 31 lines of code. *see below
+	Javascript, however, required double that before adding in UI tools.
+	Try it for yourself!
+	Enter a number below to activate the Javascript version.
+  </p>
+  
+  <div class="input-group px-5" id="outer">
+    <input type="text" id="here" class="form-control" placeholder="Enter a number between 1 and 10">
+    <input type="button" id="submit" class="btn ml-2" value="Submit">
+  </div>
+  <br>
+  <div>
+          <p id="num"></p>
+      </div>
+	  <br>
+	<div>
+	<h1 class="display-5 my-4">Computer Guessing Game in Python</h1>
+	<p class="text-left ml-5 p-5">def comp_guess_game():<br>
+    hidden_number = int(input("This is the secret number I've picked, between 1 and 10."))
+    computer_guess = random.randint(1, 10)<br>
+    guesses = list()<br>
+<br>
+    while True:<br>
+        guesses.append(computer_guess)<br>
+        if computer_guess == hidden_number:<br>
+            if len(guesses) == 1:<br>
+                print("The computer guessed your secret number on the first try!")<br>
+                break<br>
+            else:<br>
+                print("The computer guessed your secret number " + str(hidden_number) + " with only " + str(
+                    len(guesses)) + " guesses!")<br>
+                break<br>
+        elif len(guesses) < 5:<br>
+            if computer_guess < hidden_number:<br>
+                print("The computer's guess is: " + str(computer_guess) + ". Let's tell them it's too low.")<br>
+                x = computer_guess+1<br>
+                computer_guess = random.randint(x,10)<br>
+<br>
+            elif computer_guess > hidden_number:<br>
+                print("The computer's guess is: " + str(computer_guess) + ". Let's tell them it's too high.")<br>
+                x = computer_guess-1<br>
+                computer_guess = random.randint(1,x)<br>
+        else:<br>
+            print("""You win!
+The computer was unable to guess your number in 4 guesses.
+""")<br>
+            break<br>
+comp_guess_game()<br>
+</p>
+	</div>
+  </div>
+  <script src="javascript.js"></script>
+</body>
+	
